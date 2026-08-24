@@ -20,4 +20,4 @@ public:
         return ans ;
         
     }
-}; // return pair vale swalo me hmesa recursion aur backtrackong lgegi aur alag se ek function bnana pdega
+}; // Agar question mein saare combinations/permutations generate karne hain, tab recursion + backtracking commonly lagti hai.
