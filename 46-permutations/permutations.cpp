@@ -1,23 +1,27 @@
 class Solution {
 public:
 
-   void solve(vector<int>&nums,int i,vector<vector<int>>&ans){
-    if(i==nums.size()){
+   void solve(vector<int>nums,int i,vector<vector<int>> &ans){
+       // base case
+
+       if(i==nums.size()){
         ans.push_back(nums);
-        return ;
-
-    }
-    for(int j=i;j<nums.size();j++){
+        return;
+       }
+       for(int j=i;j<nums.size();j++){
         swap(nums[i],nums[j]);
-        solve(nums,i+1,ans); // r ecursive call
-        swap(nums[i],nums[j]); // backtracking
-    }  
-
+        solve(nums,i+1,ans);
+        swap(nums[i],nums[j]);
+       }
    }
-    vector<vector<int>> permute(vector<int>& nums){
+
+    vector<vector<int>> permute(vector<int>& nums) {
+
         vector<vector<int>>ans;
         solve(nums,0,ans);
-        return ans ;
         
+        return ans;
+
+      
     }
-}; // Agar question mein saare combinations/permutations generate karne hain, tab recursion + backtracking commonly lagti hai.
+};
