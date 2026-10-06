@@ -11,58 +11,48 @@
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        //base case
+        // base case
+        if(head==NULL || head->next== NULL){
+            return head;
+        } 
 
-        if(head == NULL){
-            return NULL;
-        }
-   
-       // k nodes availaible or not
         ListNode*temp = head;
         int count = 0;
-
-        while(temp!=NULL && count<k){
+         
+         while(temp!=NULL &&count<k){
             temp=temp->next;
             count++;
-        }
-
-        // less than k  node
-        if(count<k){
+         }
+          if(count<k){
             return head;
-        }
-         // reverse first node
+          }
+         
+         // reverse first k node
 
-           ListNode*next = NULL;
-           ListNode*curr = head;
-           ListNode*prev = NULL;
-            count = 0;
+         ListNode*prev = NULL;
+         ListNode*curr = head;
+         ListNode*next = NULL;
+          count = 0;
 
-         while(curr!=NULL && count<k){
+         while( curr!=NULL && count<k){
             next = curr->next;
             curr->next = prev;
             prev = curr;
             curr = next;
             count++;
 
-
          } 
 
-         // recursive call
+         // reverse krke link ke denge
 
-         
-            head->next = reverseKGroup(next,k) ; // aage vala part reverse kiya hai
+         if(next!=NULL){
+            head ->next = reverseKGroup(next,k);
 
-         
-         // return head of reversed list
+
+         }
          return prev;
 
-         // 1 reverse first k node
-         // 2 recursion
-         // 3  // return head of reversed list
-
-
-
-
-
+        
+        
     }
 };
